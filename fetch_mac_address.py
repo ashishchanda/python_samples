@@ -1,9 +1,12 @@
 DOCUMENTATION = '''
+Pre-Condition: 
+Your hosting machine serves as a PXE server. 
+Its PXE related services are running. 
 
+Once you reboot your client it will start sending requests to the DHCP server to get PXE booted. 
+This python file will read the logs and get the mac-address fetched from the requests.
 '''
-EXAMPLES = '''
 
-'''
 
 ## LOGGER
 import logging
@@ -73,7 +76,7 @@ def main():
     total_hosts=dict(required=False, type='str'),    
     )
     module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=True)
-    current_state = fetch_mac_address(module)
+    fetch_mac_address(module)
     
 from ansible.module_utils.basic import *
 
