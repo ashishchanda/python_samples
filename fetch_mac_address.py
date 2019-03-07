@@ -11,7 +11,7 @@ This python file will read the logs and get the mac-address fetched from the req
 ## LOGGER
 import logging
 logger = logging.getLogger('fetch_mac_address')
-hdlr = logging.FileHandler('/var/log/chaperone/ChaperoneNFVLog1.log')
+hdlr = logging.FileHandler('/var/log/fetchMacAddress.log')
 formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(funcName)s: %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
@@ -31,7 +31,7 @@ def fetch_mac_address(module):
     wait_counter = 0
     timeout_to_wait = 720
     syslog_path = '/var/log/syslog'
-    mac_out_path = '/home/vmware/mac-addresses/'
+    mac_out_path = '/home/mac-addresses/'
     mac_addresses = []    
     number_of_hosts = int(module.params['total_hosts'])
     changed = False    
